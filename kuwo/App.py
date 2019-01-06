@@ -36,8 +36,10 @@ from kuwo.Themes import Themes
 from kuwo.TopCategories import TopCategories
 from kuwo.TopList import TopList
 try:
-    # Ubuntu Unity uses AppIndicator instead of Gtk.StatusIcon
-    from gi.repository import AppIndicator3 as AppIndicator
+    # AppIndicator3 was imported without specifying a version first.
+   	import gi
+	gi.require_version('AppIndicator3', '0.1')
+    from gi.repository import AppIndicator3
 except ImportError:
     logger.debug(traceback.format_exc())
 
